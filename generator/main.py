@@ -28,6 +28,7 @@ storage = {
 
 @app.get("/sensors/{type_sensors}/")
 async def get_data(type_sensors: Literal["temperature", "humidity", "carbon-dioxide"]):
+    """ Функция возвразает метрики по каждому сенсору в зависимости от типа сенсора """
     return {"result": {sensor.number: sensor.value for sensor in storage[type_sensors].sensors}}
 
 

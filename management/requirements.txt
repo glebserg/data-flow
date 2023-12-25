@@ -1,5 +1,5 @@
-fastapi
-uvicorn
-peewee
-psycopg2
-requests
+fastapi==0.105.0
+uvicorn==0.25.0
+peewee==3.17.0
+psycopg2==2.9.9
+requests==2.31.0
