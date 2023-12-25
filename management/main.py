@@ -7,7 +7,7 @@ from datetime import datetime
 from fastapi import FastAPI, Body, Depends
 from models import db, SensorModel, MetricsModel
 from dependencies import get_cls_metrics, get_sensor_by_number, get_metrics_obj
-from schemas import Item
+from schemas import Item, RangeTimestamp
 import requests
 
 app = FastAPI()
@@ -30,11 +30,11 @@ async def record_to_db(item: Item, metrics_cls=Depends(get_cls_metrics), sensor=
 
 
 @app.get("/db/{type_sensors}/{number_sensor}")
-async def get_range_metrics(start: int, end: int, metrics_cls=Depends(get_cls_metrics),
+async def get_range_metrics(range_timestamps: RangeTimestamp = Depends(),
+                            metrics_cls=Depends(get_cls_metrics),
                             sensor=Depends(get_sensor_by_number)):
-    """ Чтение БД """
-
-    start_dt, end_dt = datetime.fromtimestamp(start), datetime.fromtimestamp(end)
+    """ Чтение из БД по временным меткам, в формате timestamp """
+    start_dt, end_dt = datetime.fromtimestamp(range_timestamps.start), datetime.fromtimestamp(range_timestamps.end)
     result = list(metrics_cls.select().where(
         (metrics_cls.sensor == sensor),
         ((metrics_cls.created > start_dt) & (metrics_cls.created < end_dt))))
