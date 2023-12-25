@@ -1,4 +1,4 @@
-## GreenTech
+## DataFlow
 
 ## Краткое описание
 Проект "data-flow" является системой для сбора, записи и управления данными с помощью трех микросервисов: generator, postresql и management.
