@@ -11,7 +11,7 @@ def save_to_db(type_s: Literal["temperature", "humidity", "carbon-dioxide"],
 
 
 def main():
-    start = datetime.datetime.now() - datetime.timedelta(days=7)
+    start = datetime.datetime.now() - datetime.timedelta(days=1)
     types_sensors = ["temperature", "humidity", "carbon-dioxide"]
 
     while start < datetime.datetime.now():

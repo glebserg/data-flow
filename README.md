@@ -29,8 +29,21 @@
 
 
 ```
-git clone https://github.com/glebserg/data-flow.github
-cd project_name
-docker-compose up
+$ git clone https://github.com/glebserg/data-flow.github .
+$ docker-compose up
 ```
 
+## API Generator
+http://localhost:5001/docs - ссылка на документацию
+![Alt text](docs_generator.png)
+
+
+[//]: # (![Alt text]&#40;api_generator_sensors.png&#41;)
+<kbd>
+  <img src="api_generator_sensors.png" />
+</kbd>
+
+
+## API Management
+http://localhost:5002/docs - ссылка на документацию
+![Alt text](docs_management.png)

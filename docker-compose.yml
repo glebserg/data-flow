@@ -3,6 +3,14 @@ version: '3.4'
 
 services:
 
+  postgres:
+    container_name: ${POSTGRES_HOST}
+    image: postgres:latest
+    env_file: .env
+    restart: always
+    ports:
+      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+
   generator:
     container_name: ${GENERATOR_HOST}
     env_file: .env
@@ -13,15 +21,6 @@ services:
     volumes:
       - ./generator/:/opt/generator/
 
-
-  postgres:
-    container_name: ${POSTGRES_HOST}
-    image: postgres:latest
-    env_file: .env
-    restart: always
-    ports:
-      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
-
   management:
     container_name: management
     env_file: .env
@@ -29,5 +28,8 @@ services:
     ports:
       - "${DEBUG_MANAGEMENT_PORT}:5000"
     command: uvicorn main:app --host 0.0.0.0 --port 5000 --reload
+    depends_on:
+      - postgres
+      - generator
     volumes:
       - ./management/:/opt/management/
