@@ -17,7 +17,7 @@ app = FastAPI()
 async def get_runtime_metrics_full(type_sensors: Literal["temperature", "humidity", "carbon-dioxide"]):
     """ Получение текущих метрик всех датчиков """
 
-    resp = requests.get(f"http://{os.getenv('GENERATOR_HOST')}:5000/sensors/{type_sensors}/")
+    resp = requests.get(f"http://{os.getenv('GENERATOR_HOST')}:5000/sensors/{type_sensors}")
     return resp.json()
 
 

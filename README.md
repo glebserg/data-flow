@@ -60,9 +60,6 @@ http://localhost:5001/docs - ссылка на документацию
 http://localhost:5002/docs - ссылка на документацию
 ![Alt text](docs_management.png)
 
-Наполнение БД данными из генератора
-
-
 
 ## БД
 
